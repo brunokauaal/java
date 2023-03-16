@@ -21,12 +21,22 @@ public class Aula01 {
 		System.out.println("Soma: " + df.format((numero1 + numero2)));
 		System.out.println("Subtração: " + df.format((numero1 - numero2)));
 		System.out.println("Multiplicação: " + df.format ((numero1 * numero2)));
+		
+		if (numero2 !=0){
+		System.out.println("Divisão: " + df.format((numero1 / numero2)));
+		}else  { System.out.println("Não existe divisão por 0"); 
+		
+		}
+		
 		System.out.println("Divisão: " + df.format((numero1 / numero2)));
 		System.out.println("Potencia: " + df.format(Math.pow(numero1 , numero2)));
 		System.out.println("Raiz quadrada: " + df.format(Math.sqrt(numero1 )));
 		
 		
+		
+		
 		System.out.println("Nome: " + nome);
+		
 		
 
 	}
