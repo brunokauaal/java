@@ -24,7 +24,7 @@ public class Pesquisa {
 				genero = leia.nextInt();
 			}
 
-			sexo = leia.nextInt();
+			
 			System.out.println("Digite seu esporte favorito (1-Futebol\2-Volei/3-Basquete/4-Games): ");
 			esporte = leia.nextInt();
 
