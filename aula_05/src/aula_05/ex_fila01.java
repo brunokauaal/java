@@ -37,7 +37,7 @@ public class ex_fila01 {
 			case 2:
 				System.out.println("----- Listagem de clientes ----- ");
 
-				for (var elemento : fila)
+				for (var elemento : fila)//foreach pra listar
 					System.out.println(elemento);
 
 				break;
