@@ -1,6 +1,6 @@
 package conta.model;
 
-public class Conta { //metodos
+public class Conta { //metodos//é a superclasse
 
 	private int numero;
 	private int agencia;
@@ -16,6 +16,9 @@ public class Conta { //metodos
 		this.saldo = saldo;
 	}
 
+	
+	public Conta () {} //asinatura diferente ou seja polifonismo
+	
 	public int getNumero() {
 		return numero;
 	}

@@ -4,6 +4,8 @@ package conta;
 import java.util.Scanner;
 
 import conta.model.Conta;
+import conta.model.ContaCorrente;
+import conta.model.ContaPoupanca;
 import conta.util.Cores;
 
 public class Menu {
@@ -16,21 +18,29 @@ public class Menu {
 		float saldo, limite, valor;
 		
 		//exemplos testando metodos
+		//Teste Conta
 		Conta c1 = new Conta(1, 123, 1,"Bruno Carvalho", 100.000F);  //instanciamos e importamos o model conta
-		
 		c1.visualizar();
 		
-		System.out.println("Saldo da conta: "+ c1.getSaldo()); //pegar somente 1 valor de uma propriedade especifica
+		//teste contacorrente
+		ContaCorrente cc1 = new ContaCorrente(1, 123, 1,"Gabriel machado", 1000.000F,100.00f);
+		cc1.visualizar();
 		
-		c1.setTitular("Bruno kauã carvalho");
-
-		c1.visualizar();
+		//teste contaPoupanca
+		ContaPoupanca c3 = new ContaPoupanca(1, 123, 1,"Matheus", 1000.000F,10);
+		c3.visualizar();
 		
-		c1.sacar(200f);
-		c1.visualizar();
 		
-		c1.depositar(200f);
-		c1.visualizar();
+		cc1.sacar(200);
+		
+		cc1.depositar(200);
+		cc1.visualizar();
+		
+		Conta c2 =new Conta();
+		c2.visualizar();
+		
+		
+		
 		
 		while (true) {
 
