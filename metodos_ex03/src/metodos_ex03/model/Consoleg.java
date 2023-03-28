@@ -1,6 +1,6 @@
 package metodos_ex03.model;
 
-public class Consoleg extends Produto{
+public class Consoleg extends Produto{ //herança produto 
 	
 	private String Fabricante;
 

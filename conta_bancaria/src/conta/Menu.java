@@ -17,27 +17,16 @@ public class Menu {
 		String titular;
 		float saldo, limite, valor;
 		
-		//exemplos testando metodos
-		//Teste Conta
-		Conta c1 = new Conta(1, 123, 1,"Bruno Carvalho", 100.000F);  //instanciamos e importamos o model conta
-		c1.visualizar();
 		
-		//teste contacorrente
-		ContaCorrente cc1 = new ContaCorrente(1, 123, 1,"Gabriel machado", 1000.000F,100.00f);
+		
+		ContaCorrente cc1 = new ContaCorrente(1, 123, 1,"Gabriel machado", 1000.000F,100.00f); //objetp
 		cc1.visualizar();
-		
+																//os 2 objeto usa como base a conta
 		//teste contaPoupanca
-		ContaPoupanca c3 = new ContaPoupanca(1, 123, 1,"Matheus", 1000.000F,10);
-		c3.visualizar();
+		ContaPoupanca cp1 = new ContaPoupanca(1, 123, 2,"Matheus", 1000.000F,10); //obejeto
+		cp1.visualizar();
 		
 		
-		cc1.sacar(200);
-		
-		cc1.depositar(200);
-		cc1.visualizar();
-		
-		Conta c2 =new Conta();
-		c2.visualizar();
 		
 		
 		

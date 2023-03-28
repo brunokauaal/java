@@ -1,6 +1,6 @@
 package conta.model;
 
-public class Conta { //metodos//é a superclasse
+public abstract class  Conta { //metodos//é a superclasse
 
 	private int numero;
 	private int agencia;
