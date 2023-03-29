@@ -1,8 +1,10 @@
 package conta;
 
-
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import conta.controller.contaController;
 import conta.model.Conta;
 import conta.model.ContaCorrente;
 import conta.model.ContaPoupanca;
@@ -16,21 +18,9 @@ public class Menu {
 		int opcao, numero, agencia, tipo, aniversario, numeroDestino;
 		String titular;
 		float saldo, limite, valor;
-		
-		
-		
-		ContaCorrente cc1 = new ContaCorrente(1, 123, 1,"Gabriel machado", 1000.000F,100.00f); //objetp
-		cc1.visualizar();
-																//os 2 objeto usa como base a conta
-		//teste contaPoupanca
-		ContaPoupanca cp1 = new ContaPoupanca(1, 123, 2,"Matheus", 1000.000F,10); //obejeto
-		cp1.visualizar();
-		
-		
-		
-		
-		
-		
+
+		contaController contas = new contaController();
+
 		while (true) {
 
 			System.out.println(Cores.TEXT_WHITE_BRIGHT + Cores.ANSI_BLUE_BACKGROUND_BRIGHT
@@ -54,8 +44,13 @@ public class Menu {
 			System.out.println("Entre com a opção desejada:                          ");
 			System.out.println("                                                     " + Cores.TEXT_RESET);
 
-			opcao = leia.nextInt();
-
+			try {
+				opcao = leia.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Digite valores inteiros!");
+				leia.nextLine();
+				opcao = 0;
+			}
 			if (opcao == 9) {
 				System.out.println(Cores.TEXT_CYAN_BOLD + "Banco do Brazil com Z - O seu Futuro começa aqui!");
 				sobre();
@@ -86,27 +81,31 @@ public class Menu {
 					System.out.println("Digite o Limite de Crédito (R$): ");
 					limite = leia.nextFloat();
 
-					// criar o objeto conta corrente
+					contas.cadastrar(new ContaCorrente(contas.gerarNumero(), agencia, tipo, titular, saldo, limite));
 				}
 				case 2 -> {
 					System.out.println("Digite o dia do Aniversario da Conta: ");
 					aniversario = leia.nextInt();
 
-					// criar o objeto conta poupanca
+					contas.cadastrar(
+							new ContaPoupanca(contas.gerarNumero(), agencia, tipo, titular, saldo, aniversario));
 				}
 				}
-
+				KeyPress();
 				break;
 			case 2:
 				System.out.println("Listar todas as Contas\n\n");
-
+				contas.listarTodas();
+				KeyPress();
 				break;
 			case 3:
 				System.out.println("Consultar dados da Conta - por número\n\n");
 
 				System.out.println("Digite o número da conta: ");
 				numero = leia.nextInt();
-
+				
+				contas.procurarPorNumero(numero);
+				KeyPress();
 				break;
 			case 4:
 				System.out.println("Atualizar dados da Conta\n\n");
@@ -148,14 +147,14 @@ public class Menu {
 				}
 
 				// fim do condicional buscar na collection
-
+				KeyPress();
 				break;
 			case 5:
 				System.out.println("Apagar a Conta\n\n");
 
 				System.out.println("Digite o número da conta: ");
 				numero = leia.nextInt();
-
+				KeyPress();
 				break;
 			case 6:
 				System.out.println("Saque\n\n");
@@ -165,7 +164,7 @@ public class Menu {
 
 				System.out.println("Digite o valor do Saque: ");
 				valor = leia.nextFloat();
-
+				KeyPress();
 				break;
 			case 7:
 				System.out.println("Depósito\n\n");
@@ -175,7 +174,7 @@ public class Menu {
 
 				System.out.println("Digite o valor do Depósito: ");
 				valor = leia.nextFloat();
-
+				KeyPress();
 				break;
 			case 8:
 				System.out.println("Transferência entre Contas\n\n");
@@ -189,10 +188,11 @@ public class Menu {
 					System.out.println("Digite o Valor da Transferência (R$): ");
 					valor = leia.nextFloat();
 				} while (valor <= 0);
-
+				KeyPress();
 				break;
 			default:
 				System.out.println("\nOpção Inválida!\n");
+				KeyPress();
 				break;
 			}
 		}
@@ -203,5 +203,15 @@ public class Menu {
 		System.out.println("brunokauaalvesdecarvalho@gmail.com");
 		System.out.println("github.com/brunokauaal");
 		System.out.println("*********************************************************");
+	}
+
+	public static void KeyPress() {
+		try {
+			System.out.println(Cores.TEXT_RESET + "Pressione enter para continuar");
+			System.in.read();
+		} catch (IOException e) {
+			System.out.println("Erro digitação!");
+		}
+
 	}
 }
